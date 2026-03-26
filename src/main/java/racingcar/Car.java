@@ -4,30 +4,28 @@ import java.util.Random;
 
 public class Car {
 
-    private String name;
-    private Random random = new Random();
-    private int number = random.nextInt(10);
+    private final String name;
     private int distance;
+    private final Random random;
 
     public Car(String name, Random random) {
         this.name = name;
-        this.distance = 0;
         this.random = random;
+        this.distance = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public int addDistance() {
+    public void addDistance() {
+        int number = random.nextInt(10);
         if (number >= 4) {
             distance++;
         }
-        return distance;
     }
 
     public int getDistance() {
         return distance;
     }
-
 }
