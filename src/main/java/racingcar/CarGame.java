@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarGame {
     List<Car> cars = new ArrayList<>();
@@ -13,11 +12,10 @@ public class CarGame {
         }
     }
 
-    public void racing(int n, Random random) {
+    public void racing(int n, List<NumberGenerator> random) {
         for (int i = 0; i < n; i++) {
-            for (Car car : cars) {
-                int number = random.nextInt(10);
-                car.addDistance(number);
+            for (int j = 0; j < cars.size(); j++) {
+                cars.get(j).addDistance(random.get(j).generate());
             }
         }
     }
