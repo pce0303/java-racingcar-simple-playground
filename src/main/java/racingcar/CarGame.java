@@ -5,6 +5,7 @@ import java.util.List;
 
 public class CarGame {
     List<Car> cars = new ArrayList<>();
+    Output output = new Output();
 
     public void createCar(List<String> names) {
         for (String name : names) {
@@ -12,11 +13,9 @@ public class CarGame {
         }
     }
 
-    public void racing(int n, List<NumberGenerator> random) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < cars.size(); j++) {
-                cars.get(j).addDistance(random.get(j).generate());
-            }
+    public void racing(List<NumberGenerator> random) {
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).addDistance(random.get(i).generate());
         }
     }
 
