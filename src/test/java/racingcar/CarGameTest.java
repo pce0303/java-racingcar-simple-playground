@@ -21,7 +21,7 @@ class CarGameTest {
         CarGame carGame = new CarGame();
         carGame.createCar(List.of("choeun", "sieun", "sanghun"));
 
-        carGame.racing(5, List.of(Move, Move, Move));
+        carGame.racing(List.of(Move, Move, Move));
 
         List<String> winner = carGame.winner();
         assertThat(winner).contains("choeun", "sieun", "sanghun");
@@ -32,7 +32,7 @@ class CarGameTest {
     public void oneWinner() {
         CarGame carGame = new CarGame();
         carGame.createCar(List.of("choeun", "sieun", "sanghun"));
-        carGame.racing(5, List.of(Move, randomGen, randomGen));
+        carGame.racing(List.of(Move, randomGen, randomGen));
 
         List<String> winner = carGame.winner();
         assertThat(winner).contains("choeun");
@@ -43,7 +43,7 @@ class CarGameTest {
     public void allStop() {
         CarGame carGame = new CarGame();
         carGame.createCar(List.of("choeun", "sieun", "sanghun"));
-        carGame.racing(5, List.of(Stop, Stop, Stop));
+        carGame.racing(List.of(Stop, Stop, Stop));
 
         assertThatThrownBy(carGame::winner).isInstanceOf(IllegalStateException.class);
     }
