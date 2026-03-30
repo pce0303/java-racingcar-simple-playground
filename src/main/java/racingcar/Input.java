@@ -3,7 +3,7 @@ package racingcar;
 import java.util.List;
 import java.util.Scanner;
 
-public class View {
+public class Input {
     Scanner scanner = new Scanner(System.in);
 
     public List<String> inputName() {
