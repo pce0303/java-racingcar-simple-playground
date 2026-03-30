@@ -7,16 +7,17 @@ import java.util.Random;
 public class CarGame {
     List<Car> cars = new ArrayList<>();
 
-    public void createCar(List<String> names, List<Random> random) {
-        for (int i = 0; i < names.size(); i++) {
-            cars.add(new Car(names.get(i), random.get(i)));
+    public void createCar(List<String> names) {
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 
-    public void racing(int n) {
+    public void racing(int n, Random random) {
         for (int i = 0; i < n; i++) {
             for (Car car : cars) {
-                car.addDistance();
+                int number = random.nextInt(10);
+                car.addDistance(number);
             }
         }
     }
@@ -25,8 +26,8 @@ public class CarGame {
         List<String> winners = new ArrayList<>();
         int max = 0;
 
-        for (int i = 0; i < cars.size(); i++) {
-            int dis = cars.get(i).getDistance();
+        for (Car car : cars) {
+            int dis = car.getDistance();
             if (dis > max) {
                 max = dis;
             }
@@ -36,10 +37,10 @@ public class CarGame {
             throw new IllegalStateException("모든 차가 출발하지 않았습니다.");
         }
 
-        for (int i = 0; i < cars.size(); i++) {
-            int dis = cars.get(i).getDistance();
+        for (Car car : cars) {
+            int dis = car.getDistance();
             if (dis == max) {
-                winners.add(cars.get(i).getName());
+                winners.add(car.getName());
             }
         }
 

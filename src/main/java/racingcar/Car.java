@@ -1,16 +1,12 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 
     private final String name;
     private int distance;
-    private final Random random;
 
-    public Car(String name, Random random) {
+    public Car(String name) {
         this.name = name;
-        this.random = random;
         this.distance = 0;
     }
 
@@ -18,8 +14,7 @@ public class Car {
         return name;
     }
 
-    public void addDistance() {
-        int number = random.nextInt(10);
+    public void addDistance(int number) {
         if (number >= 4) {
             distance++;
         }
